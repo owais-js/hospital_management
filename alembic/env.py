@@ -7,6 +7,7 @@ from app.core.database import Base
 from alembic import context
 from dotenv import load_dotenv
 from app.models.patient import Patient
+from app.models.doctor import Doctor
 
 import os
 
