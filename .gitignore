@@ -4,3 +4,6 @@ alembic/__pycache__/
 alembic/versions/
 app/core/__pycache__/
 app/models/__pycache__/
+__pycache__/
+app/schemas/__pycache__/
+app/api/__pycache__/
