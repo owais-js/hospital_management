@@ -1,2 +1,6 @@
 .hospital_env/
 .env 
+alembic/__pycache__/
+alembic/versions/
+app/core/__pycache__/
+app/models/__pycache__/
