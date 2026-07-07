@@ -19,3 +19,15 @@ def create_doctor(db:Session,doctor:DoctorCreate):
 
     return db_doctor
 
+def get_doctors(db:Session):
+    return db.query(Doctor).all()
+
+def get_doctor(db:Session,doctor_id:int):
+    return(
+        db.query(Doctor)
+        .filter(Doctor.id == doctor_id)
+        .first()
+    )
+
+    
+
