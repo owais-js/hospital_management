@@ -19,3 +19,15 @@ def create_patient(db: Session, patient: PatientCreate):
     return db_patient
 
 
+def get_patients(db: Session):
+    return db.query(Patient).all()
+
+
+def get_patient(db: Session, patient_id: int):
+    return (
+        db.query(Patient)
+        .filter(Patient.id == patient_id)
+        .first()
+    )
+
+
