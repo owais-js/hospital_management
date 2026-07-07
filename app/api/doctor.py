@@ -50,3 +50,41 @@ def read_one(
             detail="Doctor not found"
         )
     return doctor
+
+
+@router.put("/{doctor_id}")
+def update(
+    doctor_id : int,
+    doctor : DoctorCreate,
+    db : Session = Depends(get_db)
+):
+    updated = update_doctor(
+        db,
+        doctor_id,
+        doctor
+    )
+    if not updated:
+        raise HTTPException(
+            status_code=404,
+            detail="Doctor not found"
+        )
+    return updated
+
+@router.delete("/{doctor_id}")
+def delete(
+    doctor_id : int,
+    db : Session = Depends(get_db)
+):
+    deleted = delete_doctor(
+        db,
+        doctor_id
+    )
+    if not deleted:
+        raise HTTPException(
+            status_code=404,
+            detail="Doctor not found"
+        )
+    return{
+        "message" : "Doctor deleted Successfully!"
+    }
+    
