@@ -20,3 +20,10 @@ def create_staff(db:Session,staff:StaffCreate):
 
 def get_staff(db:Session):
     return db.query(Staff).all()
+
+def get_staff_member(db:Session,staff_id:int):
+    return(
+        db.query(Staff)
+        .filter(Staff.id == staff_id)
+        .first()
+    )
