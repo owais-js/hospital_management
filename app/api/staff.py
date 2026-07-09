@@ -4,7 +4,8 @@ from fastapi import HTTPException,Depends,APIRouter
 from app.core.database import get_db
 
 from app.crud.staff import(
-    create_staff
+    create_staff,
+    get_staff
 )
 
 from app.schemas.staff import(
@@ -23,3 +24,9 @@ def create(
     db : Session = Depends(get_db)
 ):
     return create_staff(db,staff)
+
+@router.get("/",response_model=list[StaffResponse])
+def read_all(
+    db: Session = Depends(get_db)
+):
+    return get_staff(db)
