@@ -8,6 +8,7 @@ from alembic import context
 from dotenv import load_dotenv
 from app.models.patient import Patient
 from app.models.doctor import Doctor
+from app.models.staff import Staff
 
 import os
 
