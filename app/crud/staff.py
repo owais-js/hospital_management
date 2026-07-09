@@ -48,3 +48,17 @@ def update_staff(
     db.refresh(db_staff)
 
     return db_staff
+
+def delete_staff(
+        db : Session,
+        staff_id : int        
+):
+    db_staff = get_staff_member(db,staff_id)
+
+    if not db_staff:
+        return None
+    db.delete(db_staff)
+    db.commit()
+
+    return db_staff
+
