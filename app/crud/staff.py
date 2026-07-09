@@ -17,3 +17,6 @@ def create_staff(db:Session,staff:StaffCreate):
     db.refresh(db_staff)
 
     return db_staff
+
+def get_staff(db:Session):
+    return db.query(Staff).all()
