@@ -5,7 +5,8 @@ from app.core.database import get_db
 
 from app.crud.staff import(
     create_staff,
-    get_staff
+    get_staff,
+    get_staff_member
 )
 
 from app.schemas.staff import(
@@ -30,3 +31,17 @@ def read_all(
     db: Session = Depends(get_db)
 ):
     return get_staff(db)
+
+@router.get("/{staff_id}",response_model=StaffResponse)
+def read_one(
+    staff_id : int,
+    db: Session = Depends(get_db)
+):
+    staff = get_staff_member(db,staff_id)
+
+    if not staff:
+        raise HTTPException(
+            status_code=404,
+            detail="Staff Member not found!"
+        )
+    return staff
